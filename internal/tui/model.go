@@ -23,6 +23,8 @@ type model struct {
 	started   bool
 	finished  bool
 	elapsed   time.Duration
+	width     int
+	height    int
 }
 
 func New() model {
