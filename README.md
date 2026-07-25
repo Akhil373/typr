@@ -2,7 +2,7 @@
 
 A terminal-based typing test inspired by [toipe](https://github.com/Samyak2/toipe/).
 
-![demo](assets/output.gif)
+<video src="assets/output.webm" autoplay loop muted></video>
 
 ## Usage
 
