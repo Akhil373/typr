@@ -43,7 +43,11 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, cmd
 
 		case tea.KeyCtrlR:
-			return New(), nil
+			w, h := m.width, m.height
+			m = New()
+			m.width = w
+			m.height = h
+			return m, nil
 		}
 
 	case tickMsg:

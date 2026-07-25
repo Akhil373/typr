@@ -28,7 +28,7 @@ type model struct {
 }
 
 func New() model {
-	target := strings.Join(content.LoadWords(30), " ")
+	target := strings.Join(content.LoadWords(15), " ")
 	return model{
 		target: target,
 		typed:  "",
