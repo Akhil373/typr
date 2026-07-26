@@ -44,7 +44,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		case tea.KeyCtrlR:
 			w, h := m.width, m.height
-			m = New()
+			m = New(m.wordCount)
 			m.width = w
 			m.height = h
 			return m, nil

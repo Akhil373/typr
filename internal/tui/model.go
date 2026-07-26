@@ -19,6 +19,7 @@ func doTick() tea.Cmd {
 type model struct {
 	target    string
 	typed     string
+	wordCount int
 	startTime time.Time
 	started   bool
 	finished  bool
@@ -27,11 +28,12 @@ type model struct {
 	height    int
 }
 
-func New() model {
-	target := strings.Join(content.LoadWords(15), " ")
+func New(wordCount int) model {
+	target := strings.Join(content.LoadWords(wordCount), " ")
 	return model{
-		target: target,
-		typed:  "",
+		target:    target,
+		typed:     "",
+		wordCount: wordCount,
 	}
 }
 

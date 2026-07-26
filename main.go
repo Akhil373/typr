@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 
 	"github.com/Akhil373/typr/internal/tui"
@@ -8,8 +9,10 @@ import (
 )
 
 func main() {
+	wordCount := flag.Int("w", 30, "number of words")
+	flag.Parse()
 	p := tea.NewProgram(
-		tui.New(),
+		tui.New(*wordCount),
 		tea.WithAltScreen(),
 	)
 	_, err := p.Run()
