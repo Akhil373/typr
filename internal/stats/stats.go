@@ -1,9 +1,7 @@
 package stats
 
 import (
-	"strings"
 	"time"
-	"unicode/utf8"
 )
 
 type Result struct {
@@ -13,29 +11,33 @@ type Result struct {
 }
 
 func Compute(target, typed string, elapsed time.Duration) Result {
-	var errWords int
-	charCount := utf8.RuneCountInString(target)
+	typedRunes := []rune(typed)
+	targetRunes := []rune(target)
 
-	targetWords := strings.Fields(target)
-	typedWords := strings.Fields(typed)
+	targetCount := len(targetRunes)
+	if targetCount == 0 {
+		return Result{Elapsed: elapsed}
+	}
+
+	correctRunes := 0
+	typedCount := len(typedRunes)
+	n := min(targetCount, typedCount)
+
+	for i := range n {
+		if typedRunes[i] == targetRunes[i] {
+			correctRunes++
+		}
+	}
 
 	var accuracy float64
-	if len(targetWords) > 0 {
-		correctWords := 0
-		n := min(len(targetWords), len(typedWords))
-		for i := range n {
-			if targetWords[i] == typedWords[i] {
-				correctWords++
-			}
-		}
-		accuracy = float64(correctWords) / float64(len(targetWords)) * 100
-		errWords = (len(targetWords) - correctWords)
+	if typedCount > 0 {
+		accuracy = (float64(correctRunes) / float64(typedCount)) * 100.0
 	}
 
 	var wpm float64
 	if secs := elapsed.Seconds(); secs > 0 {
 		timeMinutes := secs / 60.0
-		wpm = ((float64(charCount) / 5.0) - float64(errWords)) / timeMinutes
+		wpm = (float64(correctRunes) / 5.0) / timeMinutes
 	}
 
 	return Result{

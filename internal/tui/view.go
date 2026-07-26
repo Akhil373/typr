@@ -15,7 +15,6 @@ func (m model) View() string {
 	var b strings.Builder
 
 	boxStyle := lipgloss.NewStyle().
-		// Background(lipgloss.Color("#1E1E2E")).
 		Foreground(lipgloss.Color("#CDD6F4")).
 		Padding(1, 2)
 
@@ -67,8 +66,8 @@ func (m model) View() string {
 			b.WriteByte('\n')
 		}
 		var (
-			correctStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#A6E3A1"))
-			wrongStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("#F38BA8"))
+			correctStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#6EE065"))
+			wrongStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("#E04E4C"))
 			cursorStyle  = lipgloss.NewStyle().Underline(true)
 		)
 		for _, ch := range word {
