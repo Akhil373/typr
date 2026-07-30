@@ -13,7 +13,7 @@ Type the displayed words and see your WPM and accuracy when finished.
 
 ```ps1
 curl https://raw.githubusercontent.com/Akhil373/typr/refs/heads/main/install.sh | bash # Linux or MacOS 
-iwr https://raw.githubusercontent.com/Akhil373/typr/refs/heads/main/install.sh | iex # Windows
+irm https://raw.githubusercontent.com/Akhil373/typr/refs/heads/main/install.ps1 | iex # Windows
 ```
 
 ## ... or build it yourself
